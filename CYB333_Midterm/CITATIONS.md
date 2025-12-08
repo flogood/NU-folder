@@ -4,7 +4,7 @@
 
 ### Course Materials
 
-[Professor Chapman, Vincent]. (2025). *CYB333: Network security course materials*. National University.
+Professor Chapman, Vincent. (2025). *CYB333: Network security course materials*. National University.
 
 ### Technical Documentation
 
