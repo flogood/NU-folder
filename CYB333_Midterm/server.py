@@ -1,6 +1,6 @@
 """
 CYB333 Midterm - Part 1: TCP Server
-Student: [Your Name]
+Student: Crsyatl Edwards-Flores
 Description: A simple TCP server that listens on localhost:8888,
              accepts one client connection, receives a message,
              and sends back an acknowledgment.
