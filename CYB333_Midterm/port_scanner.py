@@ -1,6 +1,6 @@
 """
 CYB333 Midterm - Part 2: Port Scanner
-Student: [Your Name]
+Student: Crystal Edwards-Flores
 Description: A TCP port scanner that scans localhost (127.0.0.1) and 
              scanme.nmap.org for open ports. Includes error handling
              and clear output for documentation.
