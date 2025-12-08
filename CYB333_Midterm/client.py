@@ -1,6 +1,6 @@
 """
 CYB333 Midterm - Part 1: TCP Client
-Student: [Your Name]
+Student: Crystal Edwards-Flores
 Description: A simple TCP client that connects to localhost:8888,
              sends a message to the server, and receives an acknowledgment.
 """
