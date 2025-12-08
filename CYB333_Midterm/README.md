@@ -1,6 +1,6 @@
 # CYB333 Midterm Project - Python Network Programming
 
-**Student:** [Your Name]  
+**Student:** Crystal Edwards-Flores  
 **Course:** CYB333 - Network Security  
 **Date:** December 7, 2025  
 **Repository:** https://github.com/flogood/NU-folder
