@@ -4,6 +4,9 @@ venv/
 # Log Data (Important! Do not share logs on a public repo)
 sample_logs.json
 
+# MITRE ATT&CK Data (large file, can be downloaded as needed)
+enterprise-attack.json
+
 # Python Caches
 __pycache__/
 *.pyc

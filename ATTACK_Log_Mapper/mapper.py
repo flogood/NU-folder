@@ -5,10 +5,17 @@
 # ==============================================================================
 
 import json 
+from mitreattack.stix20 import MitreAttackData
 
-# --- Initialize ATT&CK Data ---
-# Using local MITRE ATT&CK mappings (no external dependencies required)
-attack_data = None 
+# --- Load ATT&CK Data ---
+# This loads the entire framework data needed for the report.
+try:
+    print("⏳ Loading MITRE ATT&CK framework data...")
+    attack_data = MitreAttackData("enterprise-attack.json")
+    print("✅ ATT&CK data loaded successfully.")
+except Exception as e:
+    print(f"❌ Could not load ATT&CK data: {e}")
+    attack_data = None 
 
 # Define the modular rule set (your core threat intelligence)
 MAPPING_RULES = {
@@ -58,28 +65,27 @@ def map_event_to_attack(event):
     return None 
 
 
-# Function 3: Get full ATT&CK Details (Local technique database)
+# Function 3: Get full ATT&CK Details (Needed for the final report visualization)
 def get_technique_details(technique_id):
-    """Returns MITRE ATT&CK technique details from local mapping."""
+    """Looks up the full name and primary Tactic for a given Technique ID."""
     
-    # Local MITRE ATT&CK technique database (can be expanded)
-    technique_database = {
-        "T1033": {
-            "name": "System Information Discovery",
-            "tactic": "Discovery"
-        },
-        "T1087.001": {
-            "name": "Local Account Discovery",
-            "tactic": "Discovery"
-        },
-        "T1059.001": {
-            "name": "PowerShell",
-            "tactic": "Execution"
+    # If the data loading failed, return simple placeholders
+    if not attack_data:
+        return {"name": technique_id, "tactic": "Unknown"}
+
+    # Use the mitreattack-python library to find the technique object
+    technique = attack_data.get_object_by_attack_id(technique_id, "attack-pattern")
+    
+    if technique:
+        name = technique.name
+        # Find the Tactic (e.g., 'Discovery', 'Execution')
+        kill_chain_phases = getattr(technique, 'kill_chain_phases', [])
+        tactic_name = kill_chain_phases[0]['phase_name'].replace('-', ' ').title() if kill_chain_phases else "N/A"
+        
+        return {
+            "name": name, 
+            "tactic": tactic_name
         }
-    }
-    
-    if technique_id in technique_database:
-        return technique_database[technique_id]
     else:
         return {"name": "Technique Not Found", "tactic": "Unknown"}
 
