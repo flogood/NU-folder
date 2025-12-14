@@ -1,0 +1,12 @@
+# Virtual Environment
+venv/
+
+# Log Data (Important! Do not share logs on a public repo)
+sample_logs.json
+
+# Python Caches
+__pycache__/
+*.pyc
+
+# Specific Tool Files
+.vscode/
